@@ -5,7 +5,8 @@ export const theme = {
     mblue: '#0671E0',
     Azure: '4196F0',
     Sky: '#DBEDFF',
-    L_Blue: '#EEF5FC'
+    L_Blue: '#EEF5FC',
+    white: '#FFFFFF',
   },
   font: {
     family: {

@@ -7,7 +7,7 @@ export default function HeaderComponent({ title }) {
     return (
 
         <Styled.Header>
-            <Text>{title}</Text>
+            <Text style={{ color: '#fff' }}>{title}</Text>
         </Styled.Header>
 
     );

@@ -1,9 +1,10 @@
 import { Text, View } from 'react-native';
+import HeaderComponent from '../../components/Header';
 
 export default function Home() {
   return (
         <View>
-            <Text>Tela Home</Text>
+            <HeaderComponent title={'Home'} />
         </View>
   );
 };
