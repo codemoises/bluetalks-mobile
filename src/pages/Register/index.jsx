@@ -8,4 +8,4 @@ export default function Register() {
             <HeaderComponent title='LOGIN' />
         </View>
     );
-}
+};
