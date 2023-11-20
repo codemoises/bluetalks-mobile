@@ -34,7 +34,7 @@ export default function Navigation() {
         component={Favorites}
         options={{ headerShown: false, tabBarIcon: ({ focused }) => (
           <View>
-            <FaRegStar color="white" />
+            <FaRegStar style={{ fontSize: 23 }} color="white" />
           </View>
         ),
       }}
@@ -44,7 +44,7 @@ export default function Navigation() {
         component={Search}
         options={{ headerShown: false, tabBarIcon: ({ focused }) => (
           <View>
-            <FaSearch color="white" />
+            <FaSearch style={{ fontSize: 23 }} color="white" />
           </View>
         ),
       }}
@@ -54,7 +54,7 @@ export default function Navigation() {
         component={Home}
         options={{ headerShown: false, tabBarIcon: ({ focused }) => (
           <View>
-            <FaHome color="white" />
+            <FaHome style={{ fontSize: 23 }} color="white" />
           </View>
         ),
       }}
@@ -64,7 +64,7 @@ export default function Navigation() {
         component={Notification}
         options={{ headerShown: false, tabBarIcon: ({ focused }) => (
           <View>
-            <FaBell color="white" />
+            <FaBell style={{ fontSize: 23 }} color="white" />
           </View>
         ),
       }}
@@ -74,7 +74,7 @@ export default function Navigation() {
         component={Profile}
         options={{ headerShown: false, tabBarIcon: ({ focused }) => (
           <View>
-            <FaUserAlt color="white" />
+            <FaUserAlt style={{ fontSize: 23 }} color="white" />
           </View>
         ),
       }}
