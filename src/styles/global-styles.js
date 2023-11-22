@@ -13,13 +13,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-family: ${({ theme }) => theme.font.family.default};
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: ${({ theme }) => theme.font.family.secondary};
-    margin: ${({ theme }) => theme.spacings.large} 0;
+    margin: ${({ theme }) => theme.spacings.medium} 0;
   }
 
   p {
