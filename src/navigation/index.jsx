@@ -1,23 +1,24 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { StyleSheet, View } from "react-native";
-import { FaRegStar } from "react-icons/fa";
+import { View } from "react-native";
+import { FaStar } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import { FaHome } from "react-icons/fa";
 import { FaBell } from "react-icons/fa";
 import { FaUserAlt } from "react-icons/fa";
 
-import Home from "../pages/Home";
-import Favorites from "../pages/Favorites";
-import Search from "../pages/Search";
-import Notification from "../pages/Notification";
-import Profile from "../pages/Profile";
+import Home from "../screens/Home";
+import Favorites from "../screens/Favorites";
+import Search from "../screens/Search";
+import Notification from "../screens/Notification";
+import Profile from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       tabBarOptions={{
         showLabel: false,
       }}
@@ -47,7 +48,7 @@ export default function Navigation() {
                 borderRadius: 50,
               }}
             >
-              <FaRegStar
+              <FaStar
                 style={{ 
                   fontSize: 23, 
                   color: focused ? "#0671E0" : "white" }}
