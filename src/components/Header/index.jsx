@@ -29,7 +29,7 @@ export default function HeaderComponent({ title, content = true }) {
             color: "#fff",
           }}
         />
-        <Heading children={title} />
+        <Heading children={title} colorDark={false} />
         <div
           style={{ 
             display: content ? "block" : "none", 
