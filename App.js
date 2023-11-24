@@ -1,18 +1,27 @@
 import React from 'react';
+import { useFonts } from 'expo-font';
 import { StatusBar } from 'react-native';
-import { ThemeProvider } from 'styled-components';
-import { theme } from './src/styles/theme';
 import { NavigationContainer } from '@react-navigation/native';
 import Navigation from './src/navigation';
-import { GlobalStyles } from './src/styles/global-styles';
 
 export default function App() {
+
+  const [fontsLoaded] = useFonts({
+    "Inter-Light": require("./assets/fonts/Inter-Light.ttf"),
+    "Inter-Regular": require("./assets/fonts/Inter-Regular.ttf"),
+    "Inter-Medium": require("./assets/fonts/Inter-Medium.ttf"),
+    "Inter-SemiBold": require("./assets/fonts/Inter-SemiBold.ttf"),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <ThemeProvider theme={theme}>
       <NavigationContainer>
+        <StatusBar backgroundColor={"#0671E0"} />
         <Navigation />
-        <GlobalStyles />
       </NavigationContainer>
-    </ThemeProvider>
   );
 };
+
