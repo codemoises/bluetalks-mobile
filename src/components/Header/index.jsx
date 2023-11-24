@@ -1,10 +1,11 @@
 import React from "react";
 import Heading from "../Heading";
 import { FaChevronLeft } from "react-icons/fa";
+import { View } from "react-native";
 
 export default function HeaderComponent({ title, content = true }) {
   return (
-    <div
+    <View
       style={{
         position: "fixed",
         width: "100%",
@@ -12,11 +13,13 @@ export default function HeaderComponent({ title, content = true }) {
         background: "#0671E0",
       }}
     >
-      <div
+      <View
         style={{
           maxWidth: "398px",
+          height: "100%",
           margin: "13.5px auto",
           display: "flex",
+          flexDirection: "row",
           alignItems: "center",
           justifyContent: content ? "space-between" : "flex-start",
         }}
@@ -30,12 +33,12 @@ export default function HeaderComponent({ title, content = true }) {
           }}
         />
         <Heading children={title} colorDark={false} />
-        <div
+        <View
           style={{ 
             display: content ? "block" : "none", 
             width: "24px" }}
-        ></div>
-      </div>
-    </div>
+        ></View>
+      </View>
+    </View>
   );
 }
