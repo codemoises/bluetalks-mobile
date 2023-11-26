@@ -1,7 +1,7 @@
-import React from 'react';
-import { useFonts } from 'expo-font';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { useFonts } from 'expo-font';
 import Navigation from './src/navigation';
 
 export default function App() {
@@ -18,10 +18,10 @@ export default function App() {
   }
 
   return (
-      <NavigationContainer>
-        <StatusBar backgroundColor={"#0671E0"} />
-        <Navigation />
-      </NavigationContainer>
+    <NavigationContainer>
+      <StatusBar backgroundColor={'#0671E0'} />
+      <Navigation />
+    </NavigationContainer>
   );
 };
 
