@@ -1,8 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Home from "../screens/Home";
-import { Entypo } from "react-native-vector-icons/Entypo";
-import { FaHome } from "react-icons/fa";
-import { Image, View } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,8 +24,11 @@ export default function Navigation() {
         component={Home}
         options={{
           headerShown: false,
-          tabBarIcon: () => {
-            
+          tabBarIcon: ({focused, size, color }) => {
+            if (focused)
+              return <Ionicons name="home" size={size} color={color} />
+            else
+              return <Ionicons name="home-outline" size={size} color={color} />
           },
         }}
       />
