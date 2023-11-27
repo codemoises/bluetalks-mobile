@@ -49,11 +49,19 @@ export default function Navigation() {
           tabBarIcon: ({ focused }) => {
             if (focused)
               return (
-                <Ionicons name="ios-search" size={25} style={{ color: "white" }} />
+                <Ionicons
+                  name="ios-search"
+                  size={25}
+                  style={{ color: "white" }}
+                />
               );
             else
               return (
-                <Ionicons name="ios-search" size={25} style={{ color: "black" }} />
+                <Ionicons
+                  name="ios-search"
+                  size={25}
+                  style={{ color: "black" }}
+                />
               );
           },
         }}
@@ -91,11 +99,7 @@ export default function Navigation() {
               );
             else
               return (
-                <Feather
-                  name="bell"
-                  size={25}
-                  style={{ color: "black" }}
-                />
+                <Feather name="bell" size={25} style={{ color: "black" }} />
               );
           },
         }}
@@ -112,11 +116,7 @@ export default function Navigation() {
               );
             else
               return (
-                <Feather
-                  name="user"
-                  size={25}
-                  style={{ color: "black" }}
-                />
+                <Feather name="user" size={25} style={{ color: "black" }} />
               );
           },
         }}
