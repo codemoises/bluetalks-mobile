@@ -6,6 +6,7 @@ import Favorites from "../screens/Favorites";
 import Search from "../screens/Search";
 import Notification from "../screens/Notification";
 import Profile from "../screens/Profile";
+import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,8 +14,8 @@ export default function Navigation() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{ showLabel: false }}
       screenOptions={{
+        tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
           bottom: 0,
@@ -32,11 +33,22 @@ export default function Navigation() {
           tabBarIcon: ({ focused }) => {
             if (focused)
               return (
-                <Feather name="star" size={25} style={{ color: "white" }} />
+                <View
+                  style={{
+                    backgroundColor: "#DBEDFF",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Feather name="star" size={25} style={{ color: "#0671E0" }} />
+                </View>
               );
             else
               return (
-                <Feather name="star" size={25} style={{ color: "black" }} />
+                <Feather name="star" size={25} style={{ color: "#F5F7FA" }} />
               );
           },
         }}
@@ -49,18 +61,29 @@ export default function Navigation() {
           tabBarIcon: ({ focused }) => {
             if (focused)
               return (
-                <Ionicons
-                  name="ios-search"
-                  size={25}
-                  style={{ color: "white" }}
-                />
+                <View
+                  style={{
+                    backgroundColor: "#DBEDFF",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Ionicons
+                    name="ios-search"
+                    size={25}
+                    style={{ color: "#0671E0" }}
+                  />
+                </View>
               );
             else
               return (
                 <Ionicons
                   name="ios-search"
                   size={25}
-                  style={{ color: "black" }}
+                  style={{ color: "#F5F7FA" }}
                 />
               );
           },
@@ -74,14 +97,29 @@ export default function Navigation() {
           tabBarIcon: ({ focused }) => {
             if (focused)
               return (
-                <Ionicons name="home" size={25} style={{ color: "white" }} />
+                <View
+                  style={{
+                    backgroundColor: "#DBEDFF",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Ionicons
+                    name="home"
+                    size={25}
+                    style={{ color: "#0671E0" }}
+                  />
+                </View>
               );
             else
               return (
                 <Ionicons
                   name="home-outline"
                   size={25}
-                  style={{ color: "black" }}
+                  style={{ color: "#F5F7FA" }}
                 />
               );
           },
@@ -95,11 +133,22 @@ export default function Navigation() {
           tabBarIcon: ({ focused }) => {
             if (focused)
               return (
-                <Feather name="bell" size={25} style={{ color: "white" }} />
+                <View
+                  style={{
+                    backgroundColor: "#DBEDFF",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Feather name="bell" size={25} style={{ color: "#0671E0" }} />
+                </View>
               );
             else
               return (
-                <Feather name="bell" size={25} style={{ color: "black" }} />
+                <Feather name="bell" size={25} style={{ color: "#F5F7FA" }} />
               );
           },
         }}
@@ -112,11 +161,22 @@ export default function Navigation() {
           tabBarIcon: ({ focused }) => {
             if (focused)
               return (
-                <Feather name="user" size={25} style={{ color: "white" }} />
+                <View
+                  style={{
+                    backgroundColor: "#DBEDFF",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Feather name="user" size={25} style={{ color: "#0671E0" }} />
+                </View>
               );
             else
               return (
-                <Feather name="user" size={25} style={{ color: "black" }} />
+                <Feather name="user" size={25} style={{ color: "#F5F7FA" }} />
               );
           },
         }}
