@@ -1,12 +1,12 @@
 import Heading from "../Heading";
-import { Feather } from '@expo/vector-icons';
+import { Feather } from "@expo/vector-icons";
 import { View } from "react-native";
 
 export default function HeaderComponent({ title, content }) {
   return (
     <View
       style={{
-        position: 'fixed',
+        position: "fixed",
         width: "100%",
         height: 95,
         backgroundColor: "#0671E0",
@@ -28,17 +28,18 @@ export default function HeaderComponent({ title, content }) {
           name="chevron-left"
           size={24}
           style={{
-            display: content ? "block" : "none",
+            display: content ? "flex" : "none",
             color: "#fff",
           }}
         />
         <Heading children={title} colorDark={false} size={28} />
         <View
-          style={{ 
-            display: content ? "block" : "none", 
-            width: "24px" }}
+          style={{
+            display: content ? "block" : "none",
+            width: "24px",
+          }}
         ></View>
       </View>
     </View>
   );
-};
+}
