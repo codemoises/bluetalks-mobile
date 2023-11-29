@@ -1,8 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import Navigation from './src/navigation';
+import MyStack from './src/stack';
 
 export default function App() {
 
@@ -20,7 +19,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <StatusBar backgroundColor={'#0671E0'} />
-      <Navigation />
+      <MyStack />
     </NavigationContainer>
   );
 };
