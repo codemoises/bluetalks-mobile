@@ -24,14 +24,6 @@ export default function HeaderComponent({ title, content }) {
           justifyContent: content ? "space-between" : "flex-start",
         }}
       >
-        <Feather
-          name="chevron-left"
-          size={24}
-          style={{
-            display: content ? "flex" : "none",
-            color: "#fff",
-          }}
-        />
         <Heading children={title} colorDark={false} size={28} />
         <View
           style={{

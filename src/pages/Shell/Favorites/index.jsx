@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import Heading from "../../components/Heading";
-import HeaderComponent from "../../components/Header";
+import Heading from "../../../components/Heading";
+import HeaderComponent from "../../../components/Header";
 
 export default function Favorites() {
   return (
