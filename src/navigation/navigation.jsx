@@ -1,11 +1,11 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../screens/Home";
+import Home from "../pages/Shell/Home";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
-import Favorites from "../screens/Favorites";
-import Search from "../screens/Search";
-import Notification from "../screens/Notification";
-import Profile from "../screens/Profile";
+import Favorites from "../pages/Shell/Favorites";
+import Search from "../pages/Shell/Search";
+import Notification from "../pages/Shell/Notification";
+import Profile from "../pages/Shell/Profile";
 import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();

@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import MyStack from './src/stack';
+import MyStack from './src/navigation/stack';
 
 export default function App() {
 
