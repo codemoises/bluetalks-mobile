@@ -1,11 +1,11 @@
 export const theme = {
     colors: {
-      D_Blue: '#0053AD',
-      Navy: '#0663C7',
+      dblue: '#0053AD',
+      navy: '#0663C7',
       mblue: '#0671E0',
-      Azure: '4196F0',
-      Sky: '#DBEDFF',
-      L_Blue: '#EEF5FC',
+      azure: '4196F0',
+      sky: '#DBEDFF',
+      lBlue: '#EEF5FC',
       white: '#FFFFFF',
     },
     font: {

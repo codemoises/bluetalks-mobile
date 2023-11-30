@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { Link } from '@react-navigation/native';
 import HeaderComponent from '../../components/Header';
-import Logo from '../../utils/Logo';
-import TextInputComponent from '../../utils/TextInput';
-import ButtonComponent from '../../utils/Button';
+import Logo from '../../components/Logo';
+import TextInputComponent from '../../components/TextInput';
+import ButtonComponent from '../../components/Button';
 import Heading from '../../components/Heading';
 
 export default function Login({navigation, route}) {

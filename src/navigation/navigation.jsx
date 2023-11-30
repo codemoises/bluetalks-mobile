@@ -1,12 +1,12 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../pages/Shell/Home";
-import { Ionicons } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
-import Favorites from "../pages/Shell/Favorites";
-import Search from "../pages/Shell/Search";
-import Notification from "../pages/Shell/Notification";
-import Profile from "../pages/Shell/Profile";
-import { View } from "react-native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Home from '../pages/Shell/Home';
+import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
+import Favorites from '../pages/Shell/Favorites';
+import Search from '../pages/Shell/Search';
+import Notification from '../pages/Shell/Notification';
+import Profile from '../pages/Shell/Profile';
+import { View } from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -125,7 +125,7 @@ export default function Navigation() {
           },
         }}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Notificações"
         component={Notification}
         options={{
@@ -152,7 +152,7 @@ export default function Navigation() {
               );
           },
         }}
-      />
+      /> */}
       <Tab.Screen
         name="Perfil"
         component={Profile}
