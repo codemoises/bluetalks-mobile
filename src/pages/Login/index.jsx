@@ -15,8 +15,8 @@ export default function Login({navigation, route}) {
                 <Logo />
             </View>
             <View style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: 50 }}>
-                <TextInputComponent title={"E-mail"} placeholder={"Insira seu email"} type={"EmailAdress"} />
-                <TextInputComponent title={"Senha"} placeholder={"Insira sua senha"} type={"password"} secure={true} />
+                <TextInputComponent title={"E-mail"} placeholder={"Insira seu email"} />
+                <TextInputComponent title={"Senha"} placeholder={"Insira sua senha"} secure={true} />
                 <View style={{ marginTop: 40 }}>
                     <ButtonComponent title={"Entrar"} onPress={() => navigation.navigate('Navigation')} />
                     <View style={{ marginTop: 10, display: 'flex', flexDirection: 'row', gap: 4 }}>
