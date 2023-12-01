@@ -1,7 +1,7 @@
 import Heading from "../../components/Heading";
 import { View, TextInput } from "react-native";
 
-export default function TextInputComponent({ title, placeholder, secure }) {
+export default function TextInputComponent({ title, placeholder, secure, onChange }) {
   return (
     <View>
       <Heading children={title} colorDark={true} size={16} />
@@ -14,6 +14,7 @@ export default function TextInputComponent({ title, placeholder, secure }) {
         }}
         placeholder={placeholder}
         secureTextEntry={secure}
+        onChangeText={onChange}
       />
     </View>
   );
