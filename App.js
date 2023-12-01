@@ -1,7 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
+import { AuthProvider } from './src/utils/authContext';
 import MyStack from './src/navigation/stack';
+import Toast from 'react-native-toast-message';
 
 export default function App() {
 
@@ -17,10 +19,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <StatusBar backgroundColor={'#0671E0'} />
-      <MyStack />
-    </NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
+        <StatusBar backgroundColor={'#0671E0'} />
+        <MyStack />
+      </NavigationContainer>
+      <Toast />
+    </AuthProvider>
   );
 };
 
