@@ -1,4 +1,7 @@
 import { useState, useContext } from "react";
+import * as yup from "yup";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { View } from "react-native";
 import { Link } from "@react-navigation/native";
 import { AuthContext } from "../../utils/authContext";
@@ -9,11 +12,32 @@ import ButtonComponent from "../../components/Button";
 import Heading from "../../components/Heading";
 import api from "../../utils/api";
 import Toast from "react-native-toast-message";
+import { Text } from "react-native";
+
+const schema = yup.object().shape({
+  email: yup.string().required("Email is required").email("Invalid email"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Password must contain at least 8 characters"),
+});
 
 export default function Login({ navigation, route }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setAuth } = useContext(AuthContext);
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
   const handleLogin = async () => {
     try {
@@ -55,21 +79,44 @@ export default function Login({ navigation, route }) {
           marginTop: 50,
         }}
       >
-        <TextInputComponent
-          title={"E-mail"}
-          placeholder={"Insira seu email"}
-          type={"EmailAdress"}
-          onChange={setEmail}
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={() => (
+            <TextInputComponent
+              title={"E-mail"}
+              placeholder={"Insira seu email"}
+              type={"EmailAdress"}
+              onChange={setEmail}
+            />
+          )}
+          name="email"
         />
-        <TextInputComponent
-          title={"Senha"}
-          placeholder={"Insira sua senha"}
-          type={"password"}
-          secure={true}
-          onChange={setPassword}
+        {errors.email && (
+          <Text style={{ color: "red" }}>{errors.email.message}</Text>
+        )}
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={() => (
+            <TextInputComponent
+              title={"Senha"}
+              placeholder={"Insira sua senha"}
+              type={"password"}
+              secure={true}
+              onChange={setPassword}
+            />
+          )}
+          name="password"
         />
+        {errors.password && (
+          <Text style={{ color: "red" }}>{errors.password.message}</Text>
+        )}
         <View style={{ marginTop: 40 }}>
-          <ButtonComponent title={"Entrar"} onPress={handleLogin} />
+          <ButtonComponent
+            title={"Entrar"}
+            onPress={handleSubmit(handleLogin)}
+          />
           <View
             style={{
               marginTop: 10,
