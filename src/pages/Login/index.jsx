@@ -15,11 +15,11 @@ import Toast from "react-native-toast-message";
 import { Text } from "react-native";
 
 const schema = yup.object().shape({
-  email: yup.string().required("Email is required").email("Invalid email"),
+  email: yup.string().required("Informe seu email.").email("Email inválido"),
   password: yup
     .string()
-    .required("Password is required")
-    .min(8, "Password must contain at least 8 characters"),
+    .required("Informe sua senha.")
+    .min(8, "A senha deve ter pelo menos 8 dígitos."),
 });
 
 export default function Login({ navigation, route }) {
@@ -79,39 +79,43 @@ export default function Login({ navigation, route }) {
           marginTop: 50,
         }}
       >
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          render={() => (
-            <TextInputComponent
-              title={"E-mail"}
-              placeholder={"Insira seu email"}
-              type={"EmailAdress"}
-              onChange={setEmail}
-            />
+        <View style={{ height: 85 }}>
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            render={() => (
+              <TextInputComponent
+                title={"E-mail"}
+                placeholder={"Insira seu email"}
+                type={"EmailAdress"}
+                onChange={setEmail}
+              />
+            )}
+            name="email"
+          />
+          {errors.email && (
+            <Text style={{ color: "red" }}>{errors.email.message}</Text>
           )}
-          name="email"
-        />
-        {errors.email && (
-          <Text style={{ color: "red" }}>{errors.email.message}</Text>
-        )}
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          render={() => (
-            <TextInputComponent
-              title={"Senha"}
-              placeholder={"Insira sua senha"}
-              type={"password"}
-              secure={true}
-              onChange={setPassword}
-            />
+        </View>
+        <View style={{ height: 85 }}>
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            render={() => (
+              <TextInputComponent
+                title={"Senha"}
+                placeholder={"Insira sua senha"}
+                type={"password"}
+                secure={true}
+                onChange={setPassword}
+              />
+            )}
+            name="password"
+          />
+          {errors.password && (
+            <Text style={{ color: "red" }}>{errors.password.message}</Text>
           )}
-          name="password"
-        />
-        {errors.password && (
-          <Text style={{ color: "red" }}>{errors.password.message}</Text>
-        )}
+        </View>
         <View style={{ marginTop: 40 }}>
           <ButtonComponent
             title={"Entrar"}
