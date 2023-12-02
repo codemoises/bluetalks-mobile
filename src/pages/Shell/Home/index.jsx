@@ -1,10 +1,8 @@
 import Heading from '../../../components/Heading';
-import GlobalStyles from '../../../styles/global-styles';
 import HeaderComponent from '../../../components/Header';
 import Figure from '../../../components/Figure';
 import { FlatList, SafeAreaView } from 'react-native';
-import { Entypo } from '@expo/vector-icons';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 export default function Home() {
   return (
