@@ -21,7 +21,7 @@ export default function HeaderComponent({ title, content }) {
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
-          justifyContent: content ? "space-between" : "flex-start",
+          justifyContent: content ? "center" : "flex-start",
         }}
       >
         <Heading children={title} colorDark={false} size={28} />
