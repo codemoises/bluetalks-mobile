@@ -60,10 +60,12 @@ export default function Register() {
           <Controller
             control={control}
             rules={{ required: true }}
-            render={() => (
+            render={({ field: { onChange, value } }) => (
               <TextInputComponent
                 title={"E-mail"}
                 placeholder={"Insira seu email"}
+                value={value}
+                onChange={onChange}
               />
             )}
             name="email"
@@ -76,10 +78,12 @@ export default function Register() {
           <Controller
             control={control}
             rules={{ required: true }}
-            render={() => (
+            render={({ field: { onChange, value } }) => (
               <TextInputComponent
                 title={"Nome"}
                 placeholder={"Insira seu nome"}
+                value={value}
+                onChange={onChange}
               />
             )}
             name="name"
@@ -92,10 +96,12 @@ export default function Register() {
           <Controller
             control={control}
             rules={{ required: true }}
-            render={() => (
+            render={({ field: { onChange, value } }) => (
               <TextInputComponent
                 title={"Senha"}
                 placeholder={"Insira sua senha"}
+                value={value}
+                onChange={onChange}
                 secure={true}
               />
             )}
@@ -109,10 +115,12 @@ export default function Register() {
           <Controller
             control={control}
             rules={{ required: true }}
-            render={() => (
+            render={({ field: { onChange, value } }) => (
               <TextInputComponent
                 title={"Confirme sua senha"}
                 placeholder={"Confirme sua senha"}
+                value={value}
+                onChange={onChange}
                 secure={true}
               />
             )}

@@ -6,6 +6,7 @@ export default function TextInputComponent({
   placeholder,
   secure,
   onChange,
+  value,
 }) {
   return (
     <View>
@@ -16,6 +17,7 @@ export default function TextInputComponent({
           width: 300,
           height: 40,
         }}
+        value={value}
         placeholder={placeholder}
         secureTextEntry={secure}
         onChangeText={onChange}

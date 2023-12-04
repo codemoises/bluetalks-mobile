@@ -16,15 +16,10 @@ import { Text } from "react-native";
 
 const schema = yup.object().shape({
   email: yup.string().required("Informe seu email.").email("Email inválido"),
-  password: yup
-    .string()
-    .required("Informe sua senha.")
-    .min(8, "A senha deve ter pelo menos 8 dígitos."),
+  password: yup.string().required("Informe sua senha."),
 });
 
 export default function Login({ navigation, route }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { setAuth } = useContext(AuthContext);
 
   const {
@@ -39,11 +34,11 @@ export default function Login({ navigation, route }) {
     },
   });
 
-  const handleLogin = async () => {
+  const handleLogin = async (data) => {
     try {
       const response = await api.post("/usuario/login", {
-        email: email,
-        senha: password,
+        email: data.email,
+        senha: data.password,
       });
 
       if (response.status === 200) {
@@ -83,12 +78,13 @@ export default function Login({ navigation, route }) {
           <Controller
             control={control}
             rules={{ required: true }}
-            render={() => (
+            render={({ field: { onChange, value } }) => (
               <TextInputComponent
                 title={"E-mail"}
                 placeholder={"Insira seu email"}
                 type={"EmailAdress"}
-                onChange={setEmail}
+                value={value}
+                onChange={onChange}
               />
             )}
             name="email"
@@ -101,13 +97,14 @@ export default function Login({ navigation, route }) {
           <Controller
             control={control}
             rules={{ required: true }}
-            render={() => (
+            render={({ field: { onChange, value } }) => (
               <TextInputComponent
                 title={"Senha"}
                 placeholder={"Insira sua senha"}
                 type={"password"}
                 secure={true}
-                onChange={setPassword}
+                onChange={onChange}
+                value={value}
               />
             )}
             name="password"
