@@ -2,10 +2,10 @@ import {
   View,
   Image,
   TouchableNativeFeedback,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
+import { useEffect } from "react";
+import { FontAwesome } from "@expo/vector-icons";
 import Heading from "../Heading";
 import { Audio } from "expo-av";
 import React from "react";
@@ -23,7 +23,7 @@ export default function Figure({ imageSrc, audioSrc, title, favorite }) {
     await sound.playAsync();
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     return sound
       ? () => {
           sound.unloadAsync();
@@ -31,6 +31,14 @@ export default function Figure({ imageSrc, audioSrc, title, favorite }) {
       : undefined;
   }, [sound]);
 
+  function handleFavoritePress(e) {
+    e.stopPropagation();
+    setFavorited(!favorited);
+  }
+
+  function handleEditPress(e) {
+    e.stopPropagation();
+  }
   return (
     <TouchableNativeFeedback onPress={playSound}>
       <View
@@ -57,17 +65,17 @@ export default function Figure({ imageSrc, audioSrc, title, favorite }) {
           />
         </View>
         <View style={{ position: "absolute", top: 6, right: 6 }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={handleFavoritePress}>
             {favorited ? (
-              <AntDesign name="staro" size={21} color="#4D4D4D" />
+              <FontAwesome name="star-o" size={21} color="#4D4D4D" />
             ) : (
-              <AntDesign name="star" size={24} color="#FFD700" />
+              <FontAwesome name="star" size={24} color="#FFD700" />
             )}
           </TouchableOpacity>
         </View>
         <View style={{ position: "absolute", bottom: 32, right: 6 }}>
-          <TouchableOpacity>
-            <Feather name="edit" size={21} color="#4D4D4D" />
+          <TouchableOpacity onPress={handleEditPress}>
+            <FontAwesome name="edit" size={21} color="#4D4D4D" />
           </TouchableOpacity>
         </View>
         <View style={{ margin: "4px 0" }}>

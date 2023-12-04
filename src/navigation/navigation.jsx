@@ -1,12 +1,12 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../pages/Shell/Home';
-import { Ionicons } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
-import Favorites from '../pages/Shell/Favorites';
-import Search from '../pages/Shell/Search';
-import Notification from '../pages/Shell/Notification';
-import Profile from '../pages/Shell/Profile';
-import { View } from 'react-native';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Home from "../pages/Shell/Home";
+import { Ionicons } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import Favorites from "../pages/Shell/Favorites";
+import Search from "../pages/Shell/Search";
+import Notification from "../pages/Shell/Notification";
+import Profile from "../pages/Shell/Profile";
+import { View } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -125,34 +125,6 @@ export default function Navigation() {
           },
         }}
       />
-      {/* <Tab.Screen
-        name="Notificações"
-        component={Notification}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => {
-            if (focused)
-              return (
-                <View
-                  style={{
-                    backgroundColor: "#DBEDFF",
-                    width: 48,
-                    height: 48,
-                    borderRadius: 50,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Feather name="bell" size={25} style={{ color: "#0671E0" }} />
-                </View>
-              );
-            else
-              return (
-                <Feather name="bell" size={25} style={{ color: "#F5F7FA" }} />
-              );
-          },
-        }}
-      /> */}
       <Tab.Screen
         name="Perfil"
         component={Profile}
