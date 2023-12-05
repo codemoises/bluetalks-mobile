@@ -1,9 +1,16 @@
 import { View, Image, TouchableOpacity } from "react-native";
 import Heading from "../Heading";
 
-export default function Category({ categorySrc, title, navigation }) {
+export default function Category({
+  categoryId,
+  categorySrc,
+  title,
+  navigation,
+}) {
   return (
-    <TouchableOpacity onPress={navigation.navigate("EditFigure")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Category", { title })}
+    >
       <View
         style={{
           width: 125,

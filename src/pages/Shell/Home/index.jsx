@@ -2,21 +2,29 @@ import Heading from "../../../components/Heading";
 import HeaderComponent from "../../../components/Header";
 import { View } from "react-native";
 import Category from "../../../components/Category";
+import ButtonComponent from "../../../components/Button";
 
 export default function Home({ navigation }) {
   return (
     <View>
-      <HeaderComponent title={"Bom dia, Blu"} content={false} />
-      <View style={{ padding: 24, display: "flex", gap: 16 }}>
-        <Heading children={"Minhas figuras"} colorDark={true} size={24} />
-        {/* <SafeAreaView>
-          <FlatList 
-            data={figures} 
-            keyExtractor={figure => figure.id}
-            numColumns={2}
-            renderItem={({ item }) => <View style={{marginHorizontal: 24, marginVertical: 12}}><Figure imageSrc={item.src} title={item.title} audioSrc={item.audio}></Figure></View>}
+      <HeaderComponent title={"Minhas Categorias"} content={false} />
+      <View
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginVertical: 26,
+        }}
+      >
+        <View style={{ marginHorizontal: 12 }}>
+          <ButtonComponent
+            title={"Adicionar Categoria"}
+            onPress={() => navigation.navigate("NewCategory")}
           />
-        </SafeAreaView> */}
+        </View>
+      </View>
+      <View style={{ padding: 24, display: "flex", gap: 16 }}>
         <Category
           categorySrc={
             "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"

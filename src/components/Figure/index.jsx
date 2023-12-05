@@ -10,7 +10,13 @@ import Heading from "../Heading";
 import { Audio } from "expo-av";
 import React from "react";
 
-export default function Figure({ imageSrc, audioSrc, title, favorite }) {
+export default function Figure({
+  imageSrc,
+  audioSrc,
+  title,
+  favorite,
+  navigation,
+}) {
   const [sound, setSound] = React.useState();
   const [favorited, setFavorited] = React.useState(favorite);
 
@@ -38,6 +44,7 @@ export default function Figure({ imageSrc, audioSrc, title, favorite }) {
 
   function handleEditPress(e) {
     e.stopPropagation();
+    navigation.navigate("EditFigure", { title, imageSrc, audioSrc, favorited });
   }
   return (
     <TouchableNativeFeedback onPress={playSound}>

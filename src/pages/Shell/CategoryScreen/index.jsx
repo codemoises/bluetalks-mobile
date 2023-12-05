@@ -1,12 +1,18 @@
-import { View } from "react-native";
+import { SafeAreaView, View, FlatList } from "react-native";
 import HeaderComponent from "../../../components/Header";
 import ButtonComponent from "../../../components/Button";
 import Figure from "../../../components/Figure";
 
-export default function CategoryScreen() {
+export default function CategoryScreen({ navigation, route }) {
+  const { title } = route.params;
   return (
     <View>
-      <HeaderComponent title={"Comer"} content={true} />
+      <HeaderComponent
+        title={title}
+        content={true}
+        hasGoBack={true}
+        navigation={navigation}
+      />
       <View
         style={{
           width: "100%",
@@ -38,6 +44,7 @@ export default function CategoryScreen() {
                 title={item.title}
                 audioSrc={item.audio}
                 favorite={item.favorite}
+                navigation={navigation}
               ></Figure>
             </View>
           )}
