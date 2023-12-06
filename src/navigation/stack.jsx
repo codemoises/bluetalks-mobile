@@ -5,6 +5,8 @@ import Navigation from "./navigation";
 import EditFigure from "../pages/Shell/EditFigure";
 import CategoryScreen from "../pages/Shell/CategoryScreen";
 import NewCategory from "../pages/Shell/NewCategory";
+import NewFigure from "../pages/Shell/NewFigure";
+import EditProfile from "../pages/Shell/EditProfile";
 
 const Stack = createStackNavigator();
 
@@ -14,9 +16,11 @@ export default function MyStack() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="NewCategory" component={NewCategory} />
+      <Stack.Screen name="NewFigure" component={NewFigure} />
       <Stack.Screen name="EditFigure" component={EditFigure} />
       <Stack.Screen name="Category" component={CategoryScreen} />
       <Stack.Screen name="Navigation" component={Navigation} />
+      <Stack.Screen name="EditProfile" component={EditProfile} />
     </Stack.Navigator>
   );
 }
