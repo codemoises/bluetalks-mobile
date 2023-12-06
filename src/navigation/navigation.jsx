@@ -4,7 +4,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import Favorites from "../pages/Shell/Favorites";
 import Search from "../pages/Shell/Search";
-import Notification from "../pages/Shell/Notification";
 import Profile from "../pages/Shell/Profile";
 import { View } from "react-native";
 
@@ -25,6 +24,42 @@ export default function Navigation() {
         },
       }}
     >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => {
+            if (focused)
+              return (
+                <View
+                  style={{
+                    backgroundColor: "#DBEDFF",
+                    width: 48,
+                    height: 48,
+                    borderRadius: 50,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Ionicons
+                    name="home"
+                    size={25}
+                    style={{ color: "#0671E0" }}
+                  />
+                </View>
+              );
+            else
+              return (
+                <Ionicons
+                  name="home-outline"
+                  size={25}
+                  style={{ color: "#F5F7FA" }}
+                />
+              );
+          },
+        }}
+      />
       <Tab.Screen
         name="Favorites"
         component={Favorites}
@@ -82,42 +117,6 @@ export default function Navigation() {
               return (
                 <Ionicons
                   name="ios-search"
-                  size={25}
-                  style={{ color: "#F5F7FA" }}
-                />
-              );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => {
-            if (focused)
-              return (
-                <View
-                  style={{
-                    backgroundColor: "#DBEDFF",
-                    width: 48,
-                    height: 48,
-                    borderRadius: 50,
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Ionicons
-                    name="home"
-                    size={25}
-                    style={{ color: "#0671E0" }}
-                  />
-                </View>
-              );
-            else
-              return (
-                <Ionicons
-                  name="home-outline"
                   size={25}
                   style={{ color: "#F5F7FA" }}
                 />
