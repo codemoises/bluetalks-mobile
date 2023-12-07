@@ -5,16 +5,21 @@ import Category from "../../../components/Category";
 import ButtonComponent from "../../../components/Button";
 import api from "../../../utils/api";
 import { useEffect, useState } from "react";
+import CategoryListView from "../../../components/CategoryListView";
 
 export default function Home({ navigation }) {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
-    (async () => {
-      const response = await api.get("/categorias");
+    const focusHandler = navigation.addListener("focus", () => {
+      (async () => {
+        const response = await api.get("/categorias");
 
-      setCategories(response.data);
-    })();
-  }, []);
+        setCategories(response.data);
+      })();
+    });
+
+    return focusHandler;
+  }, [navigation]);
 
   return (
     <View>
@@ -36,14 +41,7 @@ export default function Home({ navigation }) {
         </View>
       </View>
       <View style={{ padding: 24, display: "flex", gap: 16 }}>
-        {categories.map((category) => (
-          <Category
-            key={category._id}
-            categorySrc={category.imagem}
-            title={category.nome}
-            navigation={navigation}
-          ></Category>
-        ))}
+        <CategoryListView categories={categories} navigation={navigation} />
       </View>
     </View>
   );

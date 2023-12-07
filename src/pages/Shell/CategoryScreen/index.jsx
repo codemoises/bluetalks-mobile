@@ -2,9 +2,21 @@ import { SafeAreaView, View, FlatList } from "react-native";
 import HeaderComponent from "../../../components/Header";
 import ButtonComponent from "../../../components/Button";
 import Figure from "../../../components/Figure";
+import FigureListView from "../../../components/FigureListView";
 
 export default function CategoryScreen({ navigation, route }) {
   const { title } = route.params;
+  // const [figures, setFigures] = useState([]);
+
+  // useEffect(() => {
+  //   (async () => {
+  //     const response = await api.get("/categorias");
+  //     console.log(response.data);
+
+  //     setCategories(response.data);
+  //   })();
+  // }, []);
+
   return (
     <View>
       <HeaderComponent
@@ -26,30 +38,7 @@ export default function CategoryScreen({ navigation, route }) {
           <ButtonComponent title={"Adicionar figura"} />
         </View>
       </View>
-      <SafeAreaView
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <FlatList
-          data={figures}
-          keyExtractor={(figure) => figure.id}
-          numColumns={2}
-          renderItem={({ item }) => (
-            <View style={{ marginHorizontal: 24, marginVertical: 12 }}>
-              <Figure
-                imageSrc={item.src}
-                title={item.title}
-                audioSrc={item.audio}
-                favorite={item.favorite}
-                navigation={navigation}
-              ></Figure>
-            </View>
-          )}
-        />
-      </SafeAreaView>
+      <FigureListView figures={figures} navigation={navigation} />
     </View>
   );
 }
@@ -58,7 +47,7 @@ const figures = [
   {
     audio:
       "https://www.myinstants.com/media/sounds/que-isso-meu-filho-calma_bAsYtD0.mp3",
-    src: "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png",
+    src: "1701922452716-expo_logo_icon_145293.png",
     title: "teste1",
     id: 1,
     favorite: true,
