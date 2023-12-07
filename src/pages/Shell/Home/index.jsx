@@ -1,6 +1,6 @@
 import Heading from "../../../components/Heading";
 import HeaderComponent from "../../../components/Header";
-import { View } from "react-native";
+import { SafeAreaView, View } from "react-native";
 import Category from "../../../components/Category";
 import ButtonComponent from "../../../components/Button";
 import api from "../../../utils/api";
@@ -22,28 +22,38 @@ export default function Home({ navigation }) {
   }, [navigation]);
 
   return (
-    <View>
-      <HeaderComponent title={"Minhas Categorias"} content={false} />
-      <View
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "flex-end",
-          marginVertical: 26,
-        }}
-      >
-        <View style={{ marginHorizontal: 12 }}>
-          <ButtonComponent
-            title={"Adicionar Categoria"}
-            onPress={() => navigation.navigate("NewCategory")}
-          />
+    <SafeAreaView>
+      <View>
+        <HeaderComponent title={"Minhas Categorias"} content={false} />
+        <View
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "flex-end",
+            marginVertical: 26,
+          }}
+        >
+          <View style={{ marginHorizontal: 12 }}>
+            <ButtonComponent
+              title={"Adicionar Categoria"}
+              onPress={() => navigation.navigate("NewCategory")}
+            />
+          </View>
+        </View>
+        <View
+          style={{
+            paddingBottom: 80,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 16,
+          }}
+        >
+          <CategoryListView categories={figures} navigation={navigation} />
         </View>
       </View>
-      <View style={{ padding: 24, display: "flex", gap: 16 }}>
-        <CategoryListView categories={categories} navigation={navigation} />
-      </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
