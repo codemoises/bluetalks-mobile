@@ -1,15 +1,11 @@
-import { View, Alert, TouchableOpacity } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import HeaderComponent from "../../../components/Header";
 import Heading from "../../../components/Heading";
 import ProfileInformation from "../../../components/ProfileInformation";
 
-export default function Favorites() {
-  async function Clicado() {
-    Alert.alert("Clicado");
-  }
-
+export default function Favorites({ navigation }) {
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <HeaderComponent />
@@ -19,7 +15,7 @@ export default function Favorites() {
         }
         name={"Blu"}
         email={"blu@talks.com"}
-        onPress={Clicado}
+        onPress={"oi"}
       />
       <View
         style={{
@@ -27,7 +23,7 @@ export default function Favorites() {
           marginVertical: 158,
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
           <View
             style={{
               display: "flex",
