@@ -3,11 +3,7 @@ import Category from "../Category";
 
 export default function CategoryListView({ categories, navigation }) {
   return (
-    <SafeAreaView
-      style={{
-        backgroundColor: "red",
-      }}
-    >
+    <SafeAreaView>
       <FlatList
         scrollEnabled={true}
         data={categories}
