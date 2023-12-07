@@ -1,5 +1,6 @@
 import { View, Image, TouchableOpacity } from "react-native";
 import Heading from "../Heading";
+import { API_URL } from "@env";
 
 export default function Category({
   categoryId,
@@ -30,7 +31,7 @@ export default function Category({
         >
           <Image
             style={{ borderRadius: 12, width: "100%", height: "100%" }}
-            source={{ uri: categorySrc }}
+            source={{ uri: API_URL + "file/" + categorySrc }}
           />
         </View>
         <View style={{ margin: "4px 0" }}>

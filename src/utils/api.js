@@ -1,2 +1,4 @@
-import axios from 'axios';
-export default api = axios.create({ baseURL: 'http://guarany.ddns.net:3723/' });
+import axios from "axios";
+import { API_URL } from "@env";
+
+export default api = axios.create({ baseURL: API_URL });

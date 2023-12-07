@@ -9,8 +9,10 @@ import { FontAwesome } from "@expo/vector-icons";
 import Heading from "../Heading";
 import { Audio } from "expo-av";
 import React from "react";
+import { API_URL } from "@env";
 
 export default function Figure({
+  id,
   imageSrc,
   audioSrc,
   title,
@@ -22,7 +24,7 @@ export default function Figure({
 
   async function playSound() {
     const { sound } = await Audio.Sound.createAsync({
-      uri: audioSrc,
+      uri: API_URL + "file/" + audioSrc,
     });
     setSound(sound);
 
@@ -68,15 +70,15 @@ export default function Figure({
         >
           <Image
             style={{ borderRadius: 12, width: "100%", height: "100%" }}
-            source={{ uri: imageSrc }}
+            source={{ uri: API_URL + "file/" + imageSrc }}
           />
         </View>
         <View style={{ position: "absolute", top: 6, right: 6 }}>
           <TouchableOpacity onPress={handleFavoritePress}>
             {favorited ? (
-              <FontAwesome name="star-o" size={21} color="#4D4D4D" />
-            ) : (
               <FontAwesome name="star" size={24} color="#FFD700" />
+            ) : (
+              <FontAwesome name="star-o" size={24} color="#4D4D4D" />
             )}
           </TouchableOpacity>
         </View>

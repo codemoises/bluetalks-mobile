@@ -3,8 +3,19 @@ import HeaderComponent from "../../../components/Header";
 import { View } from "react-native";
 import Category from "../../../components/Category";
 import ButtonComponent from "../../../components/Button";
+import api from "../../../utils/api";
+import { useEffect, useState } from "react";
 
 export default function Home({ navigation }) {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    (async () => {
+      const response = await api.get("/categorias");
+
+      setCategories(response.data);
+    })();
+  }, []);
+
   return (
     <View>
       <HeaderComponent title={"Minhas Categorias"} content={false} />
@@ -25,13 +36,14 @@ export default function Home({ navigation }) {
         </View>
       </View>
       <View style={{ padding: 24, display: "flex", gap: 16 }}>
-        <Category
-          categorySrc={
-            "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
-          }
-          title={"teste"}
-          navigation={navigation}
-        ></Category>
+        {categories.map((category) => (
+          <Category
+            key={category._id}
+            categorySrc={category.imagem}
+            title={category.nome}
+            navigation={navigation}
+          ></Category>
+        ))}
       </View>
     </View>
   );
