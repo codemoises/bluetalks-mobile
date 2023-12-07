@@ -14,6 +14,7 @@ export default function FigureListView({ figures, navigation }) {
         data={figures}
         keyExtractor={(figure) => figure.id}
         numColumns={2}
+        contentContainerStyle={{ paddingBottom: 400 }}
         renderItem={({ item }) => (
           <View style={{ marginHorizontal: 24, marginVertical: 12 }}>
             <Figure

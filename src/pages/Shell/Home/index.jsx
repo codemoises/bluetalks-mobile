@@ -23,35 +23,32 @@ export default function Home({ navigation }) {
 
   return (
     <SafeAreaView>
-      <View>
-        <HeaderComponent title={"Minhas Categorias"} content={false} />
-        <View
-          style={{
-            width: "100%",
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "flex-end",
-            marginVertical: 26,
-          }}
-        >
-          <View style={{ marginHorizontal: 12 }}>
-            <ButtonComponent
-              title={"Adicionar Categoria"}
-              onPress={() => navigation.navigate("NewCategory")}
-            />
-          </View>
+      <HeaderComponent title={"Minhas Categorias"} content={false} />
+      <View
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          marginTop: 12,
+        }}
+      >
+        <View style={{ marginHorizontal: 12 }}>
+          <ButtonComponent
+            title={"Adicionar Categoria"}
+            onPress={() => navigation.navigate("NewCategory")}
+          />
         </View>
-        <View
-          style={{
-            paddingBottom: 80,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: 16,
-          }}
-        >
-          <CategoryListView categories={figures} navigation={navigation} />
-        </View>
+      </View>
+      <View
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 16,
+        }}
+      >
+        <CategoryListView categories={categories} navigation={navigation} />
       </View>
     </SafeAreaView>
   );
