@@ -51,12 +51,13 @@ export default function Register() {
       <View
         style={{
           display: "flex",
+          gap: 10,
           justifyContent: "center",
           alignItems: "center",
           marginTop: 50,
         }}
       >
-        <View style={{ height: 85 }}>
+        <View style={{ height: 84 }}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -74,7 +75,7 @@ export default function Register() {
             <Text style={{ color: "red" }}>{errors.email.message}</Text>
           )}
         </View>
-        <View style={{ height: 85 }}>
+        <View style={{ height: 84 }}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -92,7 +93,7 @@ export default function Register() {
             <Text style={{ color: "red" }}>{errors.name.message}</Text>
           )}
         </View>
-        <View style={{ height: 85 }}>
+        <View style={{ height: 84 }}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -111,7 +112,7 @@ export default function Register() {
             <Text style={{ color: "red" }}>{errors.password.message}</Text>
           )}
         </View>
-        <View style={{ height: 85 }}>
+        <View style={{ height: 84 }}>
           <Controller
             control={control}
             rules={{ required: true }}
