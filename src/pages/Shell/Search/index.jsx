@@ -3,7 +3,7 @@ import HeaderComponent from "../../../components/Header";
 import { Feather } from "@expo/vector-icons";
 import { TextInput } from "react-native";
 import Searched from "./components/searchedItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FigureListView from "../../../components/FigureListView";
 import api from "../../../utils/api";
 import Heading from "../../../components/Heading";
@@ -16,12 +16,6 @@ export default function Search({ navigation }) {
   const handleSearch = (e) => {
     const textValue = e.nativeEvent.text;
     clearTimeout(timeoutSearch);
-
-    if (!textValue) {
-      setText("");
-      setFigures([]);
-      return;
-    }
 
     setTimeoutSearch(
       setTimeout(() => {
@@ -39,6 +33,13 @@ export default function Search({ navigation }) {
     setText(textValue);
   };
 
+  useEffect(() => {
+    handleSearch({
+      nativeEvent: {
+        text: "",
+      },
+    });
+  }, []);
   return (
     <View>
       <HeaderComponent title={"Pesquisar"} content={true} />
@@ -52,11 +53,8 @@ export default function Search({ navigation }) {
             onChange={handleSearch}
           />
         </View>
-        {!!figures && figures.length > 0 ? (
-          <FigureListView figures={figures} navigation={navigation} />
-        ) : (
-          <Heading children={"Nenhuma figura encontrada"} />
-        )}
+
+        <FigureListView figures={figures} navigation={navigation} />
       </View>
     </View>
   );

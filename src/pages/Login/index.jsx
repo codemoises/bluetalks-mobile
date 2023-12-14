@@ -126,7 +126,7 @@ export default function Login({ navigation, route }) {
               gap: 4,
             }}
           >
-            <Heading children={"Já possui uma conta?"} />
+            <Heading children={"Novo por aqui?"} />
             <View>
               <Link to={{ screen: "Register" }} style={{ color: "#0671E0" }}>
                 Inscreva-se.

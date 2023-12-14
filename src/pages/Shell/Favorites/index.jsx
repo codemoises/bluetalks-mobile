@@ -6,12 +6,16 @@ import { useState, useEffect } from "react";
 export default function Favorites({ navigation }) {
   const [figures, setFigures] = useState([]);
   useEffect(() => {
-    (async () => {
-      const response = await api.get("/figuras/favorite");
+    const focusHandler = navigation.addListener("focus", () => {
+      (async () => {
+        const response = await api.get("/figuras/favorite");
 
-      setFigures(response.data);
-    })();
-  }, []);
+        setFigures(response.data);
+      })();
+    });
+
+    return focusHandler;
+  }, [navigation]);
 
   return (
     <View>

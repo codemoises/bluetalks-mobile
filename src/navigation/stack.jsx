@@ -16,11 +16,11 @@ export default function MyStack() {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
       <Stack.Screen name="NewCategory" component={NewCategory} />
-      <Stack.Screen name="NewFigure" component={NewFigure} />
       <Stack.Screen name="EditFigure" component={EditFigure} />
       <Stack.Screen name="Category" component={CategoryScreen} />
       <Stack.Screen name="Navigation" component={Navigation} />
       <Stack.Screen name="EditProfile" component={EditProfile} />
+      <Stack.Screen name="NewFigure" component={NewFigure} />
     </Stack.Navigator>
   );
 }

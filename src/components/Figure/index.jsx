@@ -10,6 +10,8 @@ import Heading from "../Heading";
 import { Audio } from "expo-av";
 import React from "react";
 import { API_URL } from "@env";
+import { theme } from "../../styles/theme";
+import api from "../../utils/api";
 
 export default function Figure({
   id,
@@ -19,6 +21,7 @@ export default function Figure({
   favorite,
   navigation,
 }) {
+  imageSrc = API_URL + "file/" + imageSrc;
   const [sound, setSound] = React.useState();
   const [favorited, setFavorited] = React.useState(favorite);
 
@@ -39,14 +42,21 @@ export default function Figure({
       : undefined;
   }, [sound]);
 
-  function handleFavoritePress(e) {
+  async function handleFavoritePress(e) {
     e.stopPropagation();
     setFavorited(!favorited);
+    await api.put(`/figura/${id}/favorite`);
   }
 
   function handleEditPress(e) {
     e.stopPropagation();
-    navigation.navigate("EditFigure", { title, imageSrc, audioSrc, favorited });
+    navigation.navigate("EditFigure", {
+      id,
+      title,
+      imageSrc,
+      audioSrc,
+      favorited,
+    });
   }
   return (
     <TouchableNativeFeedback onPress={playSound}>
@@ -70,7 +80,7 @@ export default function Figure({
         >
           <Image
             style={{ borderRadius: 12, width: "100%", height: "100%" }}
-            source={{ uri: API_URL + "file/" + imageSrc }}
+            source={{ uri: imageSrc }}
           />
         </View>
         <View style={{ position: "absolute", top: 6, right: 6 }}>
@@ -78,13 +88,13 @@ export default function Figure({
             {favorited ? (
               <FontAwesome name="star" size={24} color="#FFD700" />
             ) : (
-              <FontAwesome name="star-o" size={24} color="#4D4D4D" />
+              <FontAwesome name="star-o" size={24} color={theme.colors.white} />
             )}
           </TouchableOpacity>
         </View>
         <View style={{ position: "absolute", bottom: 32, right: 6 }}>
           <TouchableOpacity onPress={handleEditPress}>
-            <FontAwesome name="edit" size={21} color="#4D4D4D" />
+            <FontAwesome name="edit" size={21} color={theme.colors.white} />
           </TouchableOpacity>
         </View>
         <View style={{ margin: "4px 0" }}>

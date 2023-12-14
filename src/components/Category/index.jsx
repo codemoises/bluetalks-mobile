@@ -10,7 +10,7 @@ export default function Category({
 }) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Category", { title })}
+      onPress={() => navigation.navigate("Category", { title, categoryId })}
     >
       <View
         style={{

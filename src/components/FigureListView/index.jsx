@@ -12,7 +12,7 @@ export default function FigureListView({ figures, navigation }) {
     >
       <FlatList
         data={figures}
-        keyExtractor={(figure) => figure.id}
+        keyExtractor={(figure) => figure._id}
         numColumns={2}
         contentContainerStyle={{ paddingBottom: 400 }}
         renderItem={({ item }) => (

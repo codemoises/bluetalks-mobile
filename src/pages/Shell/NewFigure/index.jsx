@@ -11,6 +11,37 @@ export default function NewFigure({ navigation, route }) {
   const [text, setText] = useState("");
   const [audio, setAudio] = useState();
 
+  async function handleSave() {
+    try {
+      const formData = new FormData();
+      formData.append("nome", text);
+      formData.append("categoryId", route.params.categoryId);
+      formData.append("imagem", {
+        uri: image,
+        type: "image/jpeg",
+        name: new Date().getTime() + "figure.jpg",
+      });
+      formData.append("audio", {
+        uri: audio,
+        type: "audio/mpeg",
+        name: new Date().getTime() + "audio.mp3",
+      });
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        transformRequest: () => {
+          return formData;
+        },
+      };
+      await api.post("/figura", formData, config);
+
+      navigation.goBack();
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <View>
       <HeaderComponent
@@ -45,7 +76,7 @@ export default function NewFigure({ navigation, route }) {
           <AudioRecorder uri={audio} setUri={setAudio} />
         </View>
         <View style={{ width: "60%" }}>
-          <ButtonComponent title={"salvar"} />
+          <ButtonComponent title={"salvar"} onPress={handleSave} />
         </View>
       </View>
     </View>

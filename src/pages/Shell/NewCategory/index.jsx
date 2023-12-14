@@ -29,7 +29,7 @@ export default function NewCategory({ navigation, route }) {
       };
       await api.post("/categoria", formData, config);
 
-      navigation.goBack({ shouldRender: true });
+      navigation.goBack();
     } catch (error) {
       console.error(error);
     }

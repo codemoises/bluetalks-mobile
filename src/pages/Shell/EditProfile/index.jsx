@@ -5,29 +5,45 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import HeaderComponent from "../../../components/Header";
 import TextInputComponent from "../../../components/TextInput";
 import ButtonComponent from "../../../components/Button";
-import Heading from "../../../components/Heading";
-import { Link } from "@react-navigation/native";
+import ImagePick from "../../../components/ImagePicker";
+import { useState, useContext } from "react";
+import api from "../../../utils/api";
+import { AuthContext } from "../../../utils/authContext";
+import { API_URL } from "@env";
 
-const schema = yup.object().shape({
-    name: yup.string().required("Insira um nome válido."),
-    surname: yup.string().required("Informe seu apelido."),
-    email: yup.string().required("Insira um email válido.").email("Email inválido"),
-  });
+export default function EditProfile({ navigation, route }) {
+  const { auth } = useContext(AuthContext);
+  const { name, email, photo } = route.params;
+  const [image, setImage] = useState(API_URL + "file/" + photo);
 
-export default function EditProfile({ navigation }) {
+  const [nome, setName] = useState(name);
+  const [mail, setEmail] = useState(email);
 
-      const {
-        control,
-        handleSubmit,
-        formState: { errors },
-      } = useForm({
-        resolver: yupResolver(schema),
-        defaultValues: {
-            name: "",
-            surname: "",
-            email: "",
-        },
+  const handleEdit = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("foto", {
+        uri: image,
+        type: "image/jpeg",
+        name: new Date().getTime() + "profile.jpg",
       });
+      formData.append("nome", nome);
+      formData.append("email", mail);
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        transformRequest: () => {
+          return formData;
+        },
+      };
+
+      await api.put(`/usuario/${auth.usuario._id}`, formData, config);
+      navigation.goBack();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <View>
@@ -37,73 +53,36 @@ export default function EditProfile({ navigation }) {
         hasGoBack={true}
         navigation={navigation}
       />
-        <View
+      <View
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           marginTop: 50,
+          gap: 24,
         }}
       >
-        <View style={{ height: 85 }}>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, value } }) => (
-              <TextInputComponent
-                title={"Nome Completo"}
-                placeholder={"Nome completo do usuário"}
-                value={value}
-                onChange={onChange}
-              />
-            )}
-            name="name"
+        <View>
+          <TextInputComponent
+            title={"Apelido"}
+            placeholder={"Blu"}
+            onChange={setName}
+            value={nome}
           />
-          {errors.name && (
-            <Text style={{ color: "red" }}>{errors.name.message}</Text>
-          )}
         </View>
-        <View style={{ height: 85 }}>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, value } }) => (
-              <TextInputComponent
-                title={"Apelido"}
-                placeholder={"Blu"}
-                onChange={onChange}
-                value={value}
-              />
-            )}
-            name="surname"
+        <View>
+          <TextInputComponent
+            title={"Email"}
+            placeholder={"Blu@talks.com"}
+            onChange={setEmail}
+            value={mail}
           />
-          {errors.surname && (
-            <Text style={{ color: "red" }}>{errors.surname.message}</Text>
-          )}
         </View>
-        <View style={{ height: 85 }}>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, value } }) => (
-              <TextInputComponent
-                title={"Email"}
-                placeholder={"Blu@talks.com"}
-                onChange={onChange}
-                value={value}
-              />
-            )}
-            name="email"
-          />
-          {errors.email && (
-            <Text style={{ color: "red" }}>{errors.email.message}</Text>
-          )}
+        <View>
+          <ImagePick uri={image} setUri={setImage} />
         </View>
         <View style={{ width: 247, marginTop: 40 }}>
-          <ButtonComponent
-            title={"Confirmar"}
-            onPress={() => navigation.navigate("Navigation")}
-          />
+          <ButtonComponent title={"Confirmar"} onPress={handleEdit} />
         </View>
       </View>
     </View>

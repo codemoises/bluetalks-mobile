@@ -4,18 +4,36 @@ import { Entypo } from "@expo/vector-icons";
 import HeaderComponent from "../../../components/Header";
 import Heading from "../../../components/Heading";
 import ProfileInformation from "../../../components/ProfileInformation";
+import { useContext, useState, useEffect } from "react";
+import { AuthContext } from "../../../utils/authContext";
+import { API_URL } from "@env";
 
-export default function Favorites({ navigation }) {
+export default function Favorites({ navigation, route }) {
+  const { auth } = useContext(AuthContext);
+  const [user, setUser] = useState(auth.usuario);
+  useEffect(() => {
+    const focusHandler = navigation.addListener("focus", () => {
+      (async () => {
+        const response = await api.get(`/usuario/${auth.usuario._id}`);
+
+        setUser(response.data);
+      })();
+    });
+
+    return focusHandler;
+  }, [navigation]);
+
   return (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <HeaderComponent />
       <ProfileInformation
         profileSrc={
-          "https://images.unsplash.com/photo-1516028437832-1394f2532d73?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          user.foto
+            ? API_URL + "file/" + user.foto
+            : "https://www.mountsinai.on.ca/wellbeing/our-team/team-images/person-placeholder/image"
         }
-        name={"Blu"}
-        email={"blu@talks.com"}
-        onPress={"oi"}
+        name={user.nome}
+        email={user.email}
       />
       <View
         style={{
@@ -23,7 +41,15 @@ export default function Favorites({ navigation }) {
           marginVertical: 158,
         }}
       >
-        <TouchableOpacity onPress={() => navigation.navigate("EditProfile")}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate("EditProfile", {
+              name: user.nome,
+              email: user.email,
+              photo: user.foto,
+            })
+          }
+        >
           <View
             style={{
               display: "flex",
@@ -52,7 +78,7 @@ export default function Favorites({ navigation }) {
           gap: 10,
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.replace("Login")}>
           <View
             style={{
               display: "flex",
