@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import * as yup from "yup";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -71,10 +71,11 @@ export default function Login({ navigation, route }) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          gap: 10,
           marginTop: 50,
         }}
       >
-        <View style={{ height: 85 }}>
+        <View style={{ height: 84 }}>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -93,7 +94,7 @@ export default function Login({ navigation, route }) {
             <Text style={{ color: "red" }}>{errors.email.message}</Text>
           )}
         </View>
-        <View style={{ height: 85 }}>
+        <View style={{ height: 84 }}>
           <Controller
             control={control}
             rules={{ required: true }}

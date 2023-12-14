@@ -13,9 +13,12 @@ export default function TextInputComponent({
       <Heading children={title} colorDark={true} size={16} />
       <TextInput
         style={{
-          borderBottomWidth: 1,
+          borderWidth: 1,
+          borderRadius: 4,
+          marginTop: 6,
+          padding: 12,
           width: 300,
-          height: 40,
+          height: 48,
         }}
         value={value}
         placeholder={placeholder}

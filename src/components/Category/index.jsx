@@ -34,7 +34,7 @@ export default function Category({
             source={{ uri: API_URL + "file/" + categorySrc }}
           />
         </View>
-        <View style={{ margin: "4px 0" }}>
+        <View style={{ marginTop: 6 }}>
           <Heading children={title} colorDark={true} size={16} />
         </View>
       </View>
